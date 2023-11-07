@@ -1,12 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import './AddToDo.css';
 
-export default function AddToDo() {
+export default function NotFound() {
   const navigate = useNavigate();
 
   return (
     <>
-      <div>Add new ToDo</div>
+      <div>Wrong Page</div>
       <button onClick={() => navigate('/')}> Back to main</button>
     </>
   );

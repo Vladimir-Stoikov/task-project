@@ -1,0 +1,9 @@
+.todos-list_todo {
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
