@@ -15,7 +15,7 @@ export default function ToDo({ todoParam }: ToDoProps) {
       <h5>{todoParam.name}</h5>
       <p>{todoParam.description}</p>
       <Checkbox label="complete" />
-      <button onClick={() => navigate(`change/11`)}>Change</button>
+      <button onClick={() => navigate(`change/${todoParam.id}`)}>Change</button>
     </li>
   );
 }

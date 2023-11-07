@@ -15,4 +15,10 @@ body {
   align-items: center;
 }
 
+button {
+  border-radius: 5px;
+  border: 2px solid grey;
+  padding: 0 5px;
+  margin: 5px 0;
+}
 
