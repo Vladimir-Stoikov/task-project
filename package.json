@@ -105,7 +105,7 @@
     "react-hook-form": "7.37.0",
     "react-redux": "8.1.2",
     "react-router": "6.17.0",
-    "react-router-dom": "6.3.0",
+    "react-router-dom": "^6.3.0",
     "redux": "4.2.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
