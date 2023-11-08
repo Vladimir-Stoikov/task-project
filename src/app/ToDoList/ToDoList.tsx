@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ToDo from '../../components/ToDo/ToDo';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
-import { useTypeSelector } from 'components/hooks/useTypedSelector';
+import { useTypeSelector } from 'src/hooks/useTypedSelector';
 
 export default function ToDoList() {
   const { todosList } = useTypeSelector((state) => state.todos);

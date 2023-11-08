@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { TextField } from 'components/TextField';
 import { Checkbox } from 'components/Checkbox';
 import './ChangeToDo.css';
-import { useTypeSelector } from 'components/hooks/useTypedSelector';
+import { useTypeSelector } from 'src/hooks/useTypedSelector';
 import { TodoType } from 'types/appTypes';
 import { CHANGE_TODO } from 'components/constants/reduxConstants';
 
