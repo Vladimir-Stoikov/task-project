@@ -1,5 +1,5 @@
 import { ADD_NEW_TODO, CHANGE_TODO, DELETE_TODO } from 'components/constants/reduxConstants';
-import { todoListData } from 'components/data/tmpData';
+import { todoListData } from 'components/mocks/tmpData';
 import { Action, TodoState } from 'types/redux';
 
 const defaultState: TodoState = {

@@ -6,7 +6,7 @@ import { TextField } from 'components/TextField';
 import { Checkbox } from 'components/Checkbox';
 import { TodoType } from 'types/appTypes';
 import { ADD_NEW_TODO } from 'components/constants/reduxConstants';
-import { getNewId } from 'components/functions/secondaryFunctions';
+import { getNewId } from 'components/utils/utils';
 
 export default function AddToDo() {
   const navigate = useNavigate();
