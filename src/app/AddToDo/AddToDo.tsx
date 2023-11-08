@@ -1,6 +1,6 @@
+import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddToDo.css';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { TextField } from 'components/TextField';
 import { Checkbox } from 'components/Checkbox';
@@ -49,13 +49,13 @@ export default function AddToDo() {
         label="Name"
         placeholder="Enter new Name"
         value={name}
-        onChange={(event) => setName(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
       />
       <TextField
         label="Description"
         placeholder="Enter new Description"
         value={description}
-        onChange={(event) => setDescription(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setDescription(event.target.value)}
       />
       <Checkbox label="Its Important?" checked={isImportan} onChange={() => setIsImportan((prev) => !prev)} />
       <button onClick={addNewTodo}>Add</button>

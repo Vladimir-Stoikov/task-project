@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { TextField } from 'components/TextField';
@@ -73,13 +73,13 @@ export default function ChangeToDo() {
         label="Name"
         placeholder={currentTodo.name}
         value={name}
-        onChange={(event) => setName(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
       />
       <TextField
         label="Description"
         placeholder={currentTodo.description}
         value={description}
-        onChange={(event) => setDescription(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setDescription(event.target.value)}
       />
       <Checkbox label="Its Important?" checked={isImportant} onChange={() => setIsImportant((prev) => !prev)} />
       <button onClick={returnChangedTodos}>ChangeToDo</button>

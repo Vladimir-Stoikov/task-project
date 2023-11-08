@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ToDo from '../../ToDo/ToDo';
+import ToDo from '../../components/ToDo/ToDo';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
 import { useTypeSelector } from 'components/hooks/useTypedSelector';

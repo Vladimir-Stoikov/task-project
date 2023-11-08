@@ -1,9 +1,9 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import ToDoList from 'components/Pages/ToDoList/ToDoList';
-import AddToDo from 'components/Pages/AddToDo/AddToDo';
-import NotFound from 'components/Pages/NotFound/NotFound';
-import ChangeToDo from 'components/Pages/ChangeToDo/ChangeToDo';
+import ToDoList from 'app/ToDoList/ToDoList';
+import AddToDo from 'app/AddToDo/AddToDo';
+import NotFound from 'app/NotFound/NotFound';
+import ChangeToDo from 'app/ChangeToDo/ChangeToDo';
 
 export default function App() {
   return (
