@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Checkbox } from '..';
 import { TodoType } from 'types/appTypes';
 import './ToDo.css';

@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import ToDo from '../../ToDo/ToDo';
+import { SearchInput } from 'components/SearchInput';
+import { TodoState } from 'types/redux';
 import { todoListData } from 'components/data/tmpData';
 import './toDoList.css';
-import { SearchInput } from 'components/SearchInput';
+import { useTypeSelector } from 'components/hooks/useTypedSelector';
 
 export default function ToDoList() {
-  const [todos, setTodos] = useState(todoListData);
+  const { todosList } = useTypeSelector((state) => state.todos);
+
+  const [todos, setTodos] = useState(todosList);
   const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
@@ -18,7 +21,7 @@ export default function ToDoList() {
         return prev.filter((item) => item.name.toLowerCase().includes(search));
       });
     } else {
-      setTodos(todoListData);
+      setTodos(todosList);
     }
   }, [search]);
 

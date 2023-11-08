@@ -1,4 +1,4 @@
-import { Link, Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import ToDoList from 'components/Pages/ToDoList/ToDoList';
 import AddToDo from 'components/Pages/AddToDo/AddToDo';
@@ -8,17 +8,6 @@ import ChangeToDo from 'components/Pages/ChangeToDo/ChangeToDo';
 export default function App() {
   return (
     <main className="App">
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="todos/add">Add ToDo</Link>
-          </li>
-          <li>
-            <Link to="/">All To Dos</Link>
-          </li>
-        </ul>
-      </nav> */}
-
       <Routes>
         <Route path="/todos">
           <Route index element={<ToDoList />} />
