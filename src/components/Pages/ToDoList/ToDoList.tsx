@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ToDo from '../../ToDo/ToDo';
 import { SearchInput } from 'components/SearchInput';
-import { TodoState } from 'types/redux';
-import { todoListData } from 'components/data/tmpData';
 import './toDoList.css';
 import { useTypeSelector } from 'components/hooks/useTypedSelector';
 

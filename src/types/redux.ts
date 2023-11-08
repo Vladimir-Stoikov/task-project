@@ -1,7 +1,7 @@
-import { ADD_NEW_TODO } from 'components/constants/reduxConstants';
+import { ADD_NEW_TODO, CHANGE_TODO } from 'components/constants/reduxConstants';
 
 export interface TodoType {
-  id: number;
+  id: number | string;
   name: string;
   description: string;
   isImportant: boolean;
@@ -17,4 +17,9 @@ interface ActionAdd {
   payload: TodoType;
 }
 
-export type Action = ActionAdd;
+interface ActionChange {
+  type: typeof CHANGE_TODO;
+  payload: TodoType[];
+}
+
+export type Action = ActionAdd | ActionChange;

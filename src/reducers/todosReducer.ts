@@ -1,4 +1,4 @@
-import { ADD_NEW_TODO } from 'components/constants/reduxConstants';
+import { ADD_NEW_TODO, CHANGE_TODO } from 'components/constants/reduxConstants';
 import { todoListData } from 'components/data/tmpData';
 import { Action, TodoState } from 'types/redux';
 
@@ -10,7 +10,8 @@ export const todosReducer = (state = defaultState, action: Action): TodoState =>
   switch (action.type) {
     case ADD_NEW_TODO:
       return { todosList: [...state.todosList, action.payload] };
-
+    case CHANGE_TODO:
+      return { todosList: action.payload };
     default:
       return state;
   }
