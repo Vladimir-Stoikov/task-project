@@ -1,4 +1,4 @@
-import { ADD_NEW_TODO, CHANGE_TODO } from 'components/constants/reduxConstants';
+import { ADD_NEW_TODO, CHANGE_TODO, DELETE_TODO } from 'components/constants/reduxConstants';
 
 export interface TodoType {
   id: number | string;
@@ -22,4 +22,9 @@ interface ActionChange {
   payload: TodoType[];
 }
 
-export type Action = ActionAdd | ActionChange;
+interface ActionDelete {
+  type: typeof DELETE_TODO;
+  payload: TodoType[];
+}
+
+export type Action = ActionAdd | ActionChange | ActionDelete;

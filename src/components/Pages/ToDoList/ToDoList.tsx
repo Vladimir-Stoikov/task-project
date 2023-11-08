@@ -23,6 +23,8 @@ export default function ToDoList() {
     }
   }, [search]);
 
+  useEffect(() => setTodos(todosList), [todosList]);
+
   return (
     <section className="todos-section">
       <SearchInput value={search} onChange={(value) => setSearch(value)} />
