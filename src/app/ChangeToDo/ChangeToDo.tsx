@@ -6,7 +6,7 @@ import { Checkbox } from 'components/Checkbox';
 import './ChangeToDo.css';
 import { useTypeSelector } from 'src/hooks/useTypedSelector';
 import { TodoType } from 'types/appTypes';
-import { CHANGE_TODO } from 'components/constants/reduxConstants';
+import { changeTodo } from 'app/actions/actions';
 
 export default function ChangeToDo() {
   const { id } = useParams();
@@ -57,7 +57,7 @@ export default function ChangeToDo() {
       setEmptyName(false);
     }
 
-    dispatch({ type: CHANGE_TODO, payload: newArr });
+    dispatch(changeTodo(newArr));
     backToMain();
   }
 

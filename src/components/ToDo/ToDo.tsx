@@ -4,7 +4,7 @@ import { Checkbox } from '..';
 import { TodoType } from 'types/appTypes';
 import './ToDo.css';
 import { useTypeSelector } from 'src/hooks/useTypedSelector';
-import { DELETE_TODO } from 'components/constants/reduxConstants';
+import { deleteTodo } from 'app/actions/actions';
 
 interface ToDoProps {
   todoParam: TodoType;
@@ -16,10 +16,10 @@ export default function ToDo({ todoParam }: ToDoProps) {
   const dispatch = useDispatch();
   const { todosList } = useTypeSelector((state) => state.todos);
 
-  function deleteTodo() {
+  function deleteCurrentTodo() {
     const newArr = todosList.filter((item) => item.id !== todoParam.id);
 
-    dispatch({ type: DELETE_TODO, payload: newArr });
+    dispatch(deleteTodo(newArr));
   }
 
   return (
@@ -27,7 +27,7 @@ export default function ToDo({ todoParam }: ToDoProps) {
       <h5>{todoParam.name}</h5>
       <p>{todoParam.description}</p>
       <Checkbox label="complete" />
-      <button onClick={deleteTodo}>delete</button>
+      <button onClick={deleteCurrentTodo}>delete</button>
       <button onClick={() => navigate(`change/${todoParam.id}`)}>Change</button>
     </li>
   );

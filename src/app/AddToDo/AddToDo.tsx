@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { TextField } from 'components/TextField';
 import { Checkbox } from 'components/Checkbox';
 import { TodoType } from 'types/appTypes';
-import { ADD_NEW_TODO } from 'components/constants/reduxConstants';
 import { getNewId } from 'components/utils/utils';
+import { addTodo } from 'app/actions/actions';
 
 export default function AddToDo() {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function AddToDo() {
       setEmptyName(false);
     }
 
-    dispatch({ type: ADD_NEW_TODO, payload: newTodo });
+    dispatch(addTodo(newTodo));
     backToMain();
   }
 
