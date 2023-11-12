@@ -27,4 +27,4 @@ interface ActionDelete {
   payload: TodoType[];
 }
 
-export type Action = ActionAdd | ActionChange | ActionDelete;
+export type ActionMoc = ActionAdd | ActionChange | ActionDelete;

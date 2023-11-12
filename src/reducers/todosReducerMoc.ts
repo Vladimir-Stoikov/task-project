@@ -1,12 +1,12 @@
 import { ADD_NEW_TODO, CHANGE_TODO, DELETE_TODO } from 'components/constants/reduxConstants';
 import { todoListData } from 'mocks/tmpData';
-import { Action, TodoState } from 'types/redux';
+import { ActionMoc, TodoState } from 'types/reduxMoc';
 
 const defaultState: TodoState = {
   todosList: todoListData,
 };
 
-export const todosReducer = (state = defaultState, action: Action): TodoState => {
+export const todosReducerMoc = (state = defaultState, action: ActionMoc): TodoState => {
   switch (action.type) {
     case ADD_NEW_TODO:
       return { todosList: [...state.todosList, action.payload] };

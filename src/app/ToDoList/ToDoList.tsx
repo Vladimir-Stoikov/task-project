@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import ToDo from '../../components/ToDo/ToDo';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
@@ -24,6 +25,22 @@ export default function ToDoList() {
   }, [search]);
 
   useEffect(() => setTodos(todosList), [todosList]);
+
+  useEffect(() => {
+    axios
+      .get('http://37.220.80.108/tasks')
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
 
   return (
     <section className="todos-section">
