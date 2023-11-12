@@ -1,40 +1,33 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import ToDo from '../../components/ToDo/ToDo';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
-import { useTypeSelector } from 'src/hooks/useTyped';
+import { useAppDispatch, useTypeSelector } from 'src/hooks/useTyped';
+import { getFetchTasks } from 'app/actions/actionsTasks';
+import type {} from 'redux-thunk/extend-redux';
+import ToDo from 'components/ToDo/ToDo';
 
 export default function ToDoList() {
-  const { todosList } = useTypeSelector((state) => state.todos);
   const { tasks, loading, error } = useTypeSelector((state) => state.task);
+  const dispatch = useAppDispatch();
 
-  const [todos, setTodos] = useState(todosList);
   const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (search !== '') {
-      setTodos((prev) => {
-        return prev.filter((item) => item.name.toLowerCase().includes(search));
-      });
-    } else {
-      setTodos(todosList);
-    }
-  }, [search]);
-
-  useEffect(() => setTodos(todosList), [todosList]);
+    dispatch(getFetchTasks());
+    console.log('Пришло в компонент', tasks, loading, error);
+  }, []);
 
   return (
     <section className="todos-section">
       <SearchInput value={search} onChange={(value) => setSearch(value)} />
-      {/* <ul className="todos-list">
-        {todos.map((todo) => (
+      <ul className="todos-list">
+        {tasks.map((todo) => (
           <ToDo key={todo.id} todoParam={todo} />
         ))}
-      </ul> */}
+      </ul>
       {loading ? <h4>Загрузка</h4> : null}
       {error ? <h4>{error}</h4> : null}
 

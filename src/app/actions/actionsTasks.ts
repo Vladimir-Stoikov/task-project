@@ -1,15 +1,17 @@
+import axios from 'axios';
+import { getTasksTyped } from 'api/api';
 import { GET_TASK_CONNECT, GET_TASK_FAILURE, GET_TASK_SUCCESS } from 'components/constants/reduxAxiosConstants';
-import { getTasksTyped } from 'utils/axiosReq';
+
 import { AppDispatch } from 'src/store';
+import { GetTaskType } from 'types/apiTypes';
 
 export const getFetchTasks = () => async (dispatch: AppDispatch) => {
   try {
     dispatch({ type: GET_TASK_CONNECT });
     const response = await getTasksTyped();
-    setTimeout(() => {
-      console.log(response);
-      dispatch({ type: GET_TASK_SUCCESS, payload: response });
-    }, 2000);
+    console.log('В экшене', response);
+
+    dispatch({ type: GET_TASK_SUCCESS, payload: response });
   } catch (error) {
     dispatch({
       type: GET_TASK_FAILURE,

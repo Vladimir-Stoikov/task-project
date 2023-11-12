@@ -1,6 +1,5 @@
 import axios from 'axios';
+import { GetTaskType } from 'types/apiTypes';
 
-// export const getTasksApi = (count: number) =>
-//   axios.get(`https://baconipsum.com/api/`, {
-//     params: { type: "all-meat", sentences: count }
-//   });
+export const getTasksTyped = (): Promise<GetTaskType> =>
+  axios.get('http://37.220.80.108/tasks').then((response) => response.data);

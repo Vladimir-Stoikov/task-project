@@ -1,25 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Checkbox } from '..';
-import { TodoType } from 'types/appTypes';
 import './ToDo.css';
 import { useTypeSelector } from 'src/hooks/useTyped';
-import { deleteTodo } from 'app/actions/actions';
+// import { deleteTodo } from 'app/actions/actions';
+import { GetTaskType } from 'types/apiTypes';
 
-interface ToDoProps {
-  todoParam: TodoType;
-  callback?: () => void;
-}
-
-export default function ToDo({ todoParam }: ToDoProps) {
+export default function ToDo({ todoParam }: GetTaskType) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { todosList } = useTypeSelector((state) => state.todos);
 
   function deleteCurrentTodo() {
-    const newArr = todosList.filter((item) => item.id !== todoParam.id);
+    // const newArr = todosList.filter((item) => item.id !== todoParam.id);
 
-    dispatch(deleteTodo(newArr));
+    // dispatch(deleteTodo(newArr));
+    console.log('Delete todo');
   }
 
   return (
