@@ -1,8 +1,8 @@
 .todos-section {
   background-color: white;
-  min-width: 15vw;
-  height: auto;
-  width: auto;
+  min-width: 30vw;
+  height: 90vh;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,10 +12,16 @@
 }
 
 .todos-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  width: 95%;
   list-style: none;
   padding: 0;
   max-height: 70vh;
   overflow-y: auto;
-
+  overflow-x: auto;
 }
 

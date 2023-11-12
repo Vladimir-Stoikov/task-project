@@ -4,7 +4,41 @@
   padding: 0.2rem 0.5rem;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  justify-content: space-between;
+  margin: 5px;
   width: 300px;
+  height: 250px;
 }
 
+.todos-list_buttons-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.todos-list_title {
+  text-align: center;
+  border-bottom: solid 2px rgba(180, 122, 145, 0.5);
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.todos-list_button {
+  margin: 1px;
+  height: 30px;
+  background: linear-gradient(45deg, rgb(211, 176, 190), rgb(180, 122, 145));
+  color: white;
+  border: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: transform ease .3s;
+}
+
+.todos-list_button:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+
+.todos-list_button:active {
+  opacity: 0.85;
+  transform: scale(1.05);
+}

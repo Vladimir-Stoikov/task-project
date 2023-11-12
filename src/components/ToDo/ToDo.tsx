@@ -39,13 +39,19 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
 
   return (
     <li className="todos-list_todo">
-      <h5>
+      <h5 className="todos-list_title">
         {name} {id}
       </h5>
       <p>{info}</p>
       <Checkbox label="complete" checked={complete} onChange={() => setComplete((prev) => !prev)} />
-      <button onClick={deleteCurrentTodo}>delete</button>
-      <button onClick={() => navigate(`change/${id}`)}>Change</button>
+      <section className="todos-list_buttons-group">
+        <button className="todos-list_button" onClick={deleteCurrentTodo}>
+          delete
+        </button>
+        <button className="todos-list_button" onClick={() => navigate(`change/${id}`)}>
+          change
+        </button>
+      </section>
     </li>
   );
 }

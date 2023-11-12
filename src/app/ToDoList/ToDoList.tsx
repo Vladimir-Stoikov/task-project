@@ -11,16 +11,23 @@ export default function ToDoList() {
   const { tasks, loading, error } = useTypeSelector((state) => state.task);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [completedSearch, setCompletedSearch] = useState(false);
   const [search, setSearch] = useState('');
+  const [importantSearch, setImportantSearch] = useState(false);
   const [render, setRender] = useState(false);
 
   useEffect(() => {
-    dispatch(getFetchTasks());
-  }, [render]);
+    dispatch(getFetchTasks(completedSearch, search, importantSearch));
+  }, [render, search, completedSearch, importantSearch]);
 
   return (
     <section className="todos-section">
-      <SearchInput value={search} onChange={(value) => setSearch(value)} />
+      <nav>
+        <SearchInput value={search} onChange={(value) => setSearch(value)} onReset={() => setSearch('')} />
+        <button onClick={() => setCompletedSearch((prev) => !prev)}>Completed</button>
+        <button onClick={() => setImportantSearch((prev) => !prev)}>Important</button>
+      </nav>
+
       <ul className="todos-list">
         {tasks.map((todo) => (
           <ToDo
