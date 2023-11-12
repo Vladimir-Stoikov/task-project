@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Checkbox } from '..';
 import { TodoType } from 'types/appTypes';
 import './ToDo.css';
-import { useTypeSelector } from 'src/hooks/useTypedSelector';
+import { useTypeSelector } from 'src/hooks/useTyped';
 import { deleteTodo } from 'app/actions/actions';
 
 interface ToDoProps {

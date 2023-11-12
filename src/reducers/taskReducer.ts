@@ -8,7 +8,7 @@ const initialState: TaskRequestType = {
   error: null,
 };
 
-export const TasksReducer = (state: TaskRequestType = initialState, action: ActionGetAxios): TaskRequestType => {
+export const TasksReducer = (state = initialState, action: ActionGetAxios): TaskRequestType => {
   switch (action.type) {
     case GET_TASK_CONNECT:
       return { ...state, loading: true };
