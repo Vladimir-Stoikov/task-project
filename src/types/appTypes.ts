@@ -5,3 +5,11 @@ export interface TaskRequestType {
   loading: boolean;
   error: null | string;
 }
+
+export interface TaskType {
+  name?: string;
+  info?: string;
+  isImportant?: boolean;
+  isCompleted?: boolean;
+  id?: number;
+}
