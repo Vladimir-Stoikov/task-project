@@ -1,11 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Checkbox } from '..';
 import './ToDo.css';
-import { useAppDispatch, useTypeSelector } from 'src/hooks/useTyped';
-// import { deleteTodo } from 'app/actions/actions';
-import { TaskType } from 'types/appTypes';
+import { useAppDispatch } from 'src/hooks/useTyped';
 import { deleteFetchTask } from 'app/actions/actionsTasks';
 
 type TaskProps = {
@@ -21,29 +19,30 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [complete, setComplete] = useState(isCompleted);
-  // const dispatch = useDispatch();
-  // const { todosList } = useTypeSelector((state) => state.todos);
+  const [important, setImportant] = useState(isImportant);
 
   function deleteCurrentTodo() {
-    // const newArr = todosList.filter((item) => item.id !== todoParam.id);
-
-    // dispatch(deleteTodo(newArr));
-
     dispatch(deleteFetchTask(id));
     setTimeout(() => {
       reRender((prev) => !prev);
     }, 1);
-
-    // console.log('Delete todo', id);
   }
 
   return (
     <li className="todos-list_todo">
       <h5 className="todos-list_title">
-        {name} {id}
+        {name} #{id}
       </h5>
-      <p>{info}</p>
-      <Checkbox label="complete" checked={complete} onChange={() => setComplete((prev) => !prev)} />
+      <p className="todos-list_info">{info}</p>
+      <section className="todos-list_checbox-group">
+        <Checkbox label="complete" checked={complete} onChange={() => setComplete((prev) => !prev)} />
+        <Checkbox
+          label="important"
+          checked={important}
+          onChange={() => setImportant((prev) => !prev)}
+          disabled={complete ? true : false}
+        />
+      </section>
       <section className="todos-list_buttons-group">
         <button className="todos-list_button" onClick={deleteCurrentTodo}>
           delete

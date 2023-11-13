@@ -5,6 +5,9 @@ import {
   GET_TASK_CONNECT,
   GET_TASK_FAILURE,
   GET_TASK_SUCCESS,
+  POST_TASK_CONNECT,
+  POST_TASK_FAILURE,
+  POST_TASK_SUCCESS,
 } from 'components/constants/reduxAxiosConstants';
 import { TaskRequestType } from 'types/appTypes';
 import { ActionsAxios } from 'types/reduxAxios';
@@ -29,6 +32,13 @@ export const TasksReducer = (state = initialState, action: ActionsAxios): TaskRe
     case DELETE_TASK_SUCCESS:
       return { ...state, loading: false };
     case DELETE_TASK_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+
+    case POST_TASK_CONNECT:
+      return { ...state, loading: true };
+    case POST_TASK_SUCCESS:
+      return { ...state, loading: false };
+    case POST_TASK_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     default:

@@ -1,4 +1,4 @@
-import { deleteTaskTyped, getTasksTyped, mapTask } from 'api/api';
+import { deleteTaskTyped, getTasksTyped, mapTask, postTaskTyped } from 'api/api';
 import {
   DELETE_TASK_CONNECT,
   DELETE_TASK_FAILURE,
@@ -6,6 +6,9 @@ import {
   GET_TASK_CONNECT,
   GET_TASK_FAILURE,
   GET_TASK_SUCCESS,
+  POST_TASK_CONNECT,
+  POST_TASK_FAILURE,
+  POST_TASK_SUCCESS,
 } from 'components/constants/reduxAxiosConstants';
 
 import { AppDispatch } from 'src/store';
@@ -16,7 +19,6 @@ export const getFetchTasks =
     try {
       dispatch({ type: GET_TASK_CONNECT });
       const response = await getTasksTyped(completedSearch, nameLike, importantSearch);
-      console.log(response);
       const mappedResponse = mapTask(response);
 
       dispatch({ type: GET_TASK_SUCCESS, payload: mappedResponse });
@@ -40,3 +42,17 @@ export const deleteFetchTask = (id: number | undefined) => async (dispatch: AppD
     });
   }
 };
+
+export const postFetchTask =
+  (name: string, info: string, isImportant: boolean, isCompleted: boolean) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch({ type: POST_TASK_CONNECT });
+      await postTaskTyped(name, info, isImportant, isCompleted);
+      dispatch({ type: POST_TASK_SUCCESS });
+    } catch (error) {
+      dispatch({
+        type: POST_TASK_FAILURE,
+        payload: 'POST Ошибка при добавлении задачи',
+      });
+    }
+  };

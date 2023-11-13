@@ -6,6 +6,9 @@ import {
   GET_TASK_CONNECT,
   GET_TASK_FAILURE,
   GET_TASK_SUCCESS,
+  POST_TASK_CONNECT,
+  POST_TASK_FAILURE,
+  POST_TASK_SUCCESS,
 } from 'components/constants/reduxAxiosConstants';
 
 type ActionGetTasksConnect = {
@@ -35,10 +38,26 @@ type ActionDeleteTasksFailure = {
   payload: string;
 };
 
+type ActionPostTasksConnect = {
+  type: typeof POST_TASK_CONNECT;
+};
+
+type ActionPostTasksSuccess = {
+  type: typeof POST_TASK_SUCCESS;
+};
+
+type ActionPostTasksFailure = {
+  type: typeof POST_TASK_FAILURE;
+  payload: string;
+};
+
 export type ActionsAxios =
   | ActionGetTasksConnect
   | ActionGetTasksSuccess
   | ActionGetTasksFailure
   | ActionDeleteTasksConnect
   | ActionDeleteTasksSuccess
-  | ActionDeleteTasksFailure;
+  | ActionDeleteTasksFailure
+  | ActionPostTasksConnect
+  | ActionPostTasksSuccess
+  | ActionPostTasksFailure;
