@@ -8,13 +8,13 @@ export default function App() {
   return (
     <main className="App">
       <Routes>
-        <Route path="/todos">
+        <Route path="/tasks">
           <Route index element={<ToDoList />} />
           <Route path="add" element={<AddToDo />} />
           <Route path="change/:id" element={<ChangeToDo />} />
         </Route>
         <Route path="/notfound" element={<NotFound />} />
-        <Route path="/" element={<Navigate to="/todos" />} />
+        <Route path="/" element={<Navigate to="/tasks" />} />
         <Route path="*" element={<Navigate to="/notfound" />} />
       </Routes>
     </main>

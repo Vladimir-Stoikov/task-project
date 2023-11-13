@@ -1,31 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import { Checkbox } from '..';
 import './ToDo.css';
 import { useAppDispatch } from 'src/hooks/useTyped';
 import { deleteFetchTask } from 'app/actions/actionsTasks';
+import { TaskPropsType } from 'types/appTypes';
 
-type TaskProps = {
-  id: number | undefined;
-  name: string | undefined;
-  info: string | undefined;
-  isCompleted: boolean | undefined;
-  isImportant: boolean | undefined;
-  reRender: Dispatch<SetStateAction<boolean>>;
-};
-
-export default function ToDo({ id, name, info, isCompleted, isImportant, reRender }: TaskProps) {
+export default function ToDo({ id, name, info, isCompleted, isImportant, reRender }: TaskPropsType) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [complete, setComplete] = useState(isCompleted);
   const [important, setImportant] = useState(isImportant);
 
   function deleteCurrentTodo() {
-    dispatch(deleteFetchTask(id));
-    setTimeout(() => {
-      reRender((prev) => !prev);
-    }, 1);
+    dispatch(deleteFetchTask(id)).then(() => reRender((prev) => !prev));
   }
 
   return (
@@ -40,7 +29,7 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
           label="important"
           checked={important}
           onChange={() => setImportant((prev) => !prev)}
-          disabled={complete ? true : false}
+          disabled={complete}
         />
       </section>
       <section className="todos-list_buttons-group">

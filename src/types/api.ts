@@ -3,9 +3,8 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/tasks/{taskId}": {
+  '/tasks/{taskId}': {
     /** @description Get task by taskId */
     get: {
       parameters: {
@@ -17,7 +16,7 @@ export interface paths {
         /** @description Task */
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               /** @description task name. */
               name?: string;
               /** @description task description. */
@@ -44,7 +43,7 @@ export interface paths {
         /** @description Auto generated using Swagger Inspector */
         200: {
           content: {
-            "application/json; charset=utf-8": string;
+            'application/json; charset=utf-8': string;
           };
         };
       };
@@ -58,7 +57,7 @@ export interface paths {
       };
       requestBody?: {
         content: {
-          "application/json": {
+          'application/json': {
             isImportant?: boolean;
             name?: string;
             info?: string;
@@ -70,7 +69,7 @@ export interface paths {
         /** @description Task */
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               /** @description task name. */
               name?: string;
               /** @description task description. */
@@ -87,7 +86,7 @@ export interface paths {
       };
     };
   };
-  "/tasks": {
+  '/tasks': {
     /** @description Get all tasks */
     get: {
       parameters: {
@@ -101,18 +100,18 @@ export interface paths {
         /** @description Task */
         200: {
           content: {
-            "application/json": {
-                /** @description task name. */
-                name?: string;
-                /** @description task description. */
-                info?: string;
-                /** @description Task importance */
-                isImportant?: boolean;
-                /** @description Task completance */
-                isCompleted?: boolean;
-                /** @description task id. */
-                id?: number;
-              }[];
+            'application/json': {
+              /** @description task name. */
+              name?: string;
+              /** @description task description. */
+              info?: string;
+              /** @description Task importance */
+              isImportant?: boolean;
+              /** @description Task completance */
+              isCompleted?: boolean;
+              /** @description task id. */
+              id?: number;
+            }[];
           };
         };
       };
@@ -121,7 +120,7 @@ export interface paths {
     post: {
       requestBody?: {
         content: {
-          "application/json": {
+          'application/json': {
             isImportant?: boolean;
             name?: string;
             info?: string;
@@ -132,7 +131,7 @@ export interface paths {
         /** @description Task */
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               /** @description task name. */
               name?: string;
               /** @description task description. */

@@ -1,13 +1,14 @@
 import axios from 'axios';
-import { DeleteTaskType, GetTaskType, PostTaskType } from 'types/apiTypes';
+import { DeleteTaskType, GetByIdTaskType, GetTaskType, PatchTaskType, PostTaskType } from 'types/apiTypes';
+import { checkBoolean } from 'utils/index';
 
 export const mapTask = (taskFromResponse: GetTaskType): GetTaskType => {
   return taskFromResponse.map((item) => ({
     ...item,
     name: item.name ? item.name.slice(0, 21) : undefined,
     info: item.info || undefined,
-    isCompleted: Boolean(item.isCompleted) || false,
-    isImportant: Boolean(item.isImportant) || false,
+    isCompleted: checkBoolean(item.isCompleted),
+    isImportant: checkBoolean(item.isImportant),
   }));
 };
 
@@ -40,4 +41,21 @@ export const postTaskTyped = (
     info: info,
     isImportant: isImportant,
     isCompleted: isCompleted,
+  });
+
+export const getByIdTyped = (id: number | undefined): Promise<GetByIdTaskType> =>
+  axios.get(`http://37.220.80.108/tasks/${id}`).then((response) => response.data);
+
+export const patchTaskTyped = (
+  id: number,
+  name: string | undefined,
+  info: string | undefined,
+  isCompleted: boolean | undefined,
+  isImportant: boolean | undefined
+): Promise<PatchTaskType> =>
+  axios.patch(`http://37.220.80.108/tasks/${id}`, {
+    name: name,
+    info: info,
+    isCompleted: isCompleted,
+    isImportant: isImportant,
   });

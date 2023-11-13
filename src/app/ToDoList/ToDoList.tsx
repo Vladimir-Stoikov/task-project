@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
-import { useAppDispatch, useTypeSelector } from 'src/hooks/useTyped';
+import { useAppDispatch, useAppSelector } from 'src/hooks/useTyped';
 import { getFetchTasks } from 'app/actions/actionsTasks';
 import type {} from 'redux-thunk/extend-redux';
 import ToDo from 'components/ToDo/ToDo';
 
 export default function ToDoList() {
-  const { tasks, loading, error } = useTypeSelector((state) => state.task);
+  const { tasks, loading, error } = useAppSelector((state) => state.task);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [completedSearch, setCompletedSearch] = useState(false);
@@ -44,7 +44,7 @@ export default function ToDoList() {
       {loading ? <h4>Загрузка</h4> : null}
       {error ? <h4>{error}</h4> : null}
 
-      <button onClick={() => navigate('/todos/add')}>Add todo</button>
+      <button onClick={() => navigate('/tasks/add')}>Add todo</button>
     </section>
   );
 }

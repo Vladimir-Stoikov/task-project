@@ -1,11 +1,18 @@
 import { GetTaskType } from './apiTypes';
+import { TaskType } from './appTypes';
 import {
   DELETE_TASK_CONNECT,
   DELETE_TASK_FAILURE,
   DELETE_TASK_SUCCESS,
+  GETBYID_TASK_CONNECT,
+  GETBYID_TASK_FAILURE,
+  GETBYID_TASK_SUCCESS,
   GET_TASK_CONNECT,
   GET_TASK_FAILURE,
   GET_TASK_SUCCESS,
+  PATCH_TASK_CONNECT,
+  PATCH_TASK_FAILURE,
+  PATCH_TASK_SUCCESS,
   POST_TASK_CONNECT,
   POST_TASK_FAILURE,
   POST_TASK_SUCCESS,
@@ -51,6 +58,33 @@ type ActionPostTasksFailure = {
   payload: string;
 };
 
+type ActionGetByIdTasksConnect = {
+  type: typeof GETBYID_TASK_CONNECT;
+};
+
+type ActionGetByIdTasksSuccess = {
+  type: typeof GETBYID_TASK_SUCCESS;
+  payload: TaskType;
+};
+
+type ActionGetByIdTasksFailure = {
+  type: typeof GETBYID_TASK_FAILURE;
+  payload: string;
+};
+
+type ActionPatchTasksConnect = {
+  type: typeof PATCH_TASK_CONNECT;
+};
+
+type ActionPatchTasksSuccess = {
+  type: typeof PATCH_TASK_SUCCESS;
+};
+
+type ActionPatchTasksFailure = {
+  type: typeof PATCH_TASK_FAILURE;
+  payload: string;
+};
+
 export type ActionsAxios =
   | ActionGetTasksConnect
   | ActionGetTasksSuccess
@@ -60,4 +94,10 @@ export type ActionsAxios =
   | ActionDeleteTasksFailure
   | ActionPostTasksConnect
   | ActionPostTasksSuccess
-  | ActionPostTasksFailure;
+  | ActionPostTasksFailure
+  | ActionGetByIdTasksConnect
+  | ActionGetByIdTasksSuccess
+  | ActionGetByIdTasksFailure
+  | ActionPatchTasksConnect
+  | ActionPatchTasksSuccess
+  | ActionPatchTasksFailure;
