@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Checkbox } from '..';
 import './ToDo.css';
-import { useAppDispatch } from 'src/hooks/useTyped';
+import { useAppDispatch } from 'src/hooks/hooks';
 import { deleteFetchTask } from 'app/actions/actionsTasks';
 import { TaskPropsType } from 'types/appTypes';
 

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { TextField } from 'components/TextField';
 import { Checkbox } from 'components/Checkbox';
 import './ChangeToDo.css';
-import { useAppDispatch, useAppSelector } from 'src/hooks/useTyped';
+import { useAppDispatch, useAppSelector } from 'src/hooks/hooks';
 import { getByIdTask, patchTask } from 'app/actions/actionsTasks';
 import { checkBoolean } from 'utils/index';
 

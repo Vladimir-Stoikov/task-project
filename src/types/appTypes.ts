@@ -24,3 +24,10 @@ export interface TaskPropsType {
   isImportant: boolean | undefined;
   reRender: Dispatch<SetStateAction<boolean>>;
 }
+
+export type TaskSubmitFormType = {
+  name: string;
+  info: string;
+  isImportant: boolean;
+  isCompleted: boolean;
+};

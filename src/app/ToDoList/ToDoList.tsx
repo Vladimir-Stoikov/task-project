@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
-import { useAppDispatch, useAppSelector } from 'src/hooks/useTyped';
+import { useAppDispatch, useAppSelector } from 'src/hooks/hooks';
 import { getFetchTasks } from 'app/actions/actionsTasks';
 import type {} from 'redux-thunk/extend-redux';
 import ToDo from 'components/ToDo/ToDo';
