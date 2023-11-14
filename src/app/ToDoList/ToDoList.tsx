@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import { SearchInput } from 'components/SearchInput';
 import './toDoList.css';
 import { useAppDispatch, useAppSelector } from 'src/hooks/hooks';
 import { getFetchTasks } from 'app/actions/actionsTasks';
 import type {} from 'redux-thunk/extend-redux';
 import ToDo from 'components/ToDo/ToDo';
+import { Loader } from 'components/Loader';
 
 export default function ToDoList() {
   const { tasks, loading, error } = useAppSelector((state) => state.task);
@@ -21,30 +23,40 @@ export default function ToDoList() {
   }, [render, search, completedSearch, importantSearch]);
 
   return (
-    <section className="todos-section">
-      <nav>
+    <section className="task-section">
+      <div className="task-section_loader">
+        <Loader isLoading={loading}> </Loader>
+      </div>
+      <nav className="task-section_nav">
         <SearchInput value={search} onChange={(value) => setSearch(value)} onReset={() => setSearch('')} />
-        <button onClick={() => setCompletedSearch((prev) => !prev)}>Completed</button>
-        <button onClick={() => setImportantSearch((prev) => !prev)}>Important</button>
+        <button className="btn btn-primary task-section_btn" onClick={() => setCompletedSearch((prev) => !prev)}>
+          Completed
+        </button>
+        <button
+          className="btn btn-outline-primary task-section_btn"
+          onClick={() => setImportantSearch((prev) => !prev)}>
+          Important
+        </button>
       </nav>
 
-      <ul className="todos-list">
-        {tasks.map((todo) => (
+      <ul className="task-list">
+        {tasks.map((task) => (
           <ToDo
-            key={todo.id}
-            id={todo.id}
-            name={todo.name}
-            info={todo.info}
-            isCompleted={todo.isCompleted}
-            isImportant={todo.isImportant}
+            key={nanoid()}
+            id={task.id}
+            name={task.name}
+            info={task.info}
+            isCompleted={task.isCompleted}
+            isImportant={task.isImportant}
             reRender={setRender}
           />
         ))}
       </ul>
-      {loading ? <h4>Загрузка</h4> : null}
       {error ? <h4>{error}</h4> : null}
 
-      <button onClick={() => navigate('/tasks/add')}>Add todo</button>
+      <button className="btn btn-primary" onClick={() => navigate('/tasks/add')}>
+        Add todo
+      </button>
     </section>
   );
 }

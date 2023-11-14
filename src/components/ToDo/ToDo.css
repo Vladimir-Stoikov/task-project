@@ -26,7 +26,7 @@
   border-bottom: solid 2px rgba(180, 122, 145, 0.5);
   padding: 0.5rem 0;
   font-size: 1rem;
-    overflow: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 

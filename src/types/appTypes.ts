@@ -13,7 +13,7 @@ export interface TaskRequestType {
   tasks: GetTaskType;
   loading: boolean;
   error: null | string;
-  task: TaskType | undefined;
+  task: Partial<TaskType> | undefined;
 }
 
 export interface TaskPropsType {

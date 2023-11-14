@@ -7,7 +7,7 @@ export const validationSchema = Yup.object().shape({
     .max(20, 'Name must not exceed 20 characters'),
   info: Yup.string()
     .required('Info is required')
-    .min(6, 'Info must be at least 6 characters')
+    .min(4, 'Info must be at least 6 characters')
     .max(40, 'Info must not exceed 40 characters'),
   isImportant: Yup.boolean(),
   isCompleted: Yup.boolean(),

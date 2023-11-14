@@ -1,13 +1,24 @@
-.todo-add-new {
+.task-window {
   background-color: white;
-  min-height: 50vh;
   height: auto;
-  min-width: 300px;
-  width: 20vw;
+width: 320px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
   padding: 20px 10px;
+}
+
+.task-window_form {
+  width: 280px;
+
+
+}
+
+.task-window_buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
 }
