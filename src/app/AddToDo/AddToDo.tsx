@@ -6,9 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './AddToDo.valid';
 import { useAppDispatch } from 'src/hooks/hooks';
 import { postFetchTask } from 'app/actions/actionsTasks';
-import { TaskSubmitFormType } from 'types/appTypes';
+import { TaskResponseType } from 'types/apiTypes';
 
-const defaultValues: TaskSubmitFormType = {
+const defaultValues: TaskResponseType = {
   name: '',
   info: '',
   isImportant: false,
@@ -19,7 +19,7 @@ export default function AddToDo() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { handleSubmit, reset, control, setValue } = useForm<TaskSubmitFormType>({
+  const { handleSubmit, reset, control, setValue } = useForm<TaskResponseType>({
     defaultValues: defaultValues,
     resolver: yupResolver(validationSchema),
   });
@@ -29,7 +29,7 @@ export default function AddToDo() {
   const onImportantChange = (evt: ChangeEvent<HTMLInputElement>) => setValue('isImportant', evt.target.checked);
   const onCompletedChange = (evt: ChangeEvent<HTMLInputElement>) => setValue('isCompleted', evt.target.checked);
 
-  const onSubmit = (data: TaskSubmitFormType) => {
+  const onSubmit = (data: TaskResponseType) => {
     dispatch(postFetchTask(data));
     reset();
   };
@@ -41,7 +41,6 @@ export default function AddToDo() {
   return (
     <section className="task-window">
       <h4>Add new ToDo</h4>
-
       <form className="task-window_form" onSubmit={handleSubmit(onSubmit)}>
         <label>Name</label>
         <Controller

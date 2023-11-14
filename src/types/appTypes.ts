@@ -1,19 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
-import { GetTaskType } from './apiTypes';
-
-export interface TaskType {
-  name?: string;
-  info?: string;
-  isImportant?: boolean;
-  isCompleted?: boolean;
-  id?: number;
-}
+import { GetTaskType, TaskResponseType } from './apiTypes';
 
 export interface TaskRequestType {
   tasks: GetTaskType;
   loading: boolean;
   error: null | string;
-  task: Partial<TaskType> | undefined;
+  task: Partial<TaskResponseType> | undefined;
 }
 
 export interface TaskPropsType {
@@ -24,10 +16,3 @@ export interface TaskPropsType {
   isImportant: boolean | undefined;
   reRender: Dispatch<SetStateAction<boolean>>;
 }
-
-export type TaskSubmitFormType = {
-  name: string;
-  info: string;
-  isImportant: boolean;
-  isCompleted: boolean;
-};

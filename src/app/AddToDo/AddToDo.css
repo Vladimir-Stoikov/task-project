@@ -1,7 +1,7 @@
 .task-window {
   background-color: white;
   height: auto;
-width: 320px;
+  width: 320px;
 
   display: flex;
   flex-direction: column;
@@ -13,8 +13,6 @@ width: 320px;
 
 .task-window_form {
   width: 280px;
-
-
 }
 
 .task-window_buttons {

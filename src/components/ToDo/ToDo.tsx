@@ -5,8 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import './ToDo.css';
 import { validationSchemaTask } from './ToDo.valid';
 import { deleteFetchTask, patchTask } from 'app/actions/actionsTasks';
-import { TaskPropsType, TaskSubmitFormType } from 'types/appTypes';
+import { TaskPropsType } from 'types/appTypes';
 import { useAppDispatch, useAppSelector } from 'src/hooks/hooks';
+import { TaskResponseType } from 'types/apiTypes';
 
 export default function ToDo({ id, name, info, isCompleted, isImportant, reRender }: TaskPropsType) {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
 
   const [disabled, setDisabled] = useState(isCompleted);
 
-  const { reset, control, setValue } = useForm<Partial<TaskSubmitFormType>>({
+  const { reset, control, setValue } = useForm<Partial<TaskResponseType>>({
     defaultValues: {
       isImportant: isImportant,
       isCompleted: isCompleted,

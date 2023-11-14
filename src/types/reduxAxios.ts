@@ -1,5 +1,4 @@
-import { GetTaskType } from './apiTypes';
-import { TaskType } from './appTypes';
+import { GetTaskType, TaskResponseType } from './apiTypes';
 import {
   DELETE_TASK_CONNECT,
   DELETE_TASK_FAILURE,
@@ -64,7 +63,7 @@ type ActionGetByIdTasksConnect = {
 
 type ActionGetByIdTasksSuccess = {
   type: typeof GETBYID_TASK_SUCCESS;
-  payload: TaskType;
+  payload: TaskResponseType;
 };
 
 type ActionGetByIdTasksFailure = {

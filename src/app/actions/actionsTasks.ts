@@ -26,7 +26,7 @@ import {
 } from 'components/constants/reduxAxiosConstants';
 
 import { AppDispatch } from 'src/store';
-import { TaskType } from 'types/appTypes';
+import { TaskResponseType } from 'types/apiTypes';
 
 export const getFetchTasks =
   (completedSearch: boolean | null, nameLike: string | null, importantSearch: boolean | null) =>
@@ -57,7 +57,7 @@ export const deleteFetchTask = (id: number | undefined) => async (dispatch: AppD
   }
 };
 
-export const postFetchTask = (data: TaskType) => async (dispatch: AppDispatch) => {
+export const postFetchTask = (data: TaskResponseType) => async (dispatch: AppDispatch) => {
   try {
     dispatch({ type: POST_TASK_CONNECT });
     await postTaskTyped(data);
@@ -84,7 +84,7 @@ export const getByIdTask = (id: number | undefined) => async (dispatch: AppDispa
   }
 };
 
-export const patchTask = (id: number | undefined, data: TaskType) => async (dispatch: AppDispatch) => {
+export const patchTask = (id: number | undefined, data: TaskResponseType) => async (dispatch: AppDispatch) => {
   try {
     delete data.id;
     dispatch({ type: PATCH_TASK_CONNECT });
