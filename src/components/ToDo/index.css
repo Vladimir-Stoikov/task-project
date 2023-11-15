@@ -1,13 +1,13 @@
 .todos-list_todo {
   border: 2px solid lightgrey;
   border-radius: 10px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 5px;
-  width: 300px;
-  height: 250px;
+  width: 270px;
+  height: 230px;
 }
 
 .todos-list_buttons-group {
@@ -57,4 +57,10 @@
 .todos-list_button:active {
   opacity: 0.85;
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 800px) {
+  .todos-list_todo {
+    height: 200px;
+  }
 }

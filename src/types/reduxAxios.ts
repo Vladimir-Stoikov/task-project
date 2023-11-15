@@ -15,7 +15,9 @@ import {
   POST_TASK_CONNECT,
   POST_TASK_FAILURE,
   POST_TASK_SUCCESS,
-} from 'components/constants/reduxAxiosConstants';
+} from 'constants/reduxAxiosConstants';
+
+// GET ACTIONS
 
 type ActionGetTasksConnect = {
   type: typeof GET_TASK_CONNECT;
@@ -31,6 +33,8 @@ type ActionGetTasksFailure = {
   payload: string;
 };
 
+// DELETE ACTIONS
+
 type ActionDeleteTasksConnect = {
   type: typeof DELETE_TASK_CONNECT;
 };
@@ -43,6 +47,8 @@ type ActionDeleteTasksFailure = {
   type: typeof DELETE_TASK_FAILURE;
   payload: string;
 };
+
+// POST ACTIONS
 
 type ActionPostTasksConnect = {
   type: typeof POST_TASK_CONNECT;
@@ -57,6 +63,8 @@ type ActionPostTasksFailure = {
   payload: string;
 };
 
+// GET BY ID ACTIONS
+
 type ActionGetByIdTasksConnect = {
   type: typeof GETBYID_TASK_CONNECT;
 };
@@ -70,6 +78,8 @@ type ActionGetByIdTasksFailure = {
   type: typeof GETBYID_TASK_FAILURE;
   payload: string;
 };
+
+// PATCH ACTIONS
 
 type ActionPatchTasksConnect = {
   type: typeof PATCH_TASK_CONNECT;

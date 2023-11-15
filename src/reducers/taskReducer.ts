@@ -14,7 +14,7 @@ import {
   POST_TASK_CONNECT,
   POST_TASK_FAILURE,
   POST_TASK_SUCCESS,
-} from 'components/constants/reduxAxiosConstants';
+} from 'constants/reduxAxiosConstants';
 import { TaskRequestType } from 'types/appTypes';
 import { ActionsAxios } from 'types/reduxAxios';
 

@@ -3,13 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import { validationSchemaChange } from './ChangeToDo.valid';
-import './ChangeToDo.css';
+import './index.css';
 import { useAppDispatch, useAppSelector } from 'src/hooks/hooks';
-import { getByIdTask, patchTask } from 'app/actions/actionsTasks';
+import { getByIdTask, patchTask } from 'app/actions/actions';
 import { checkBoolean } from 'utils/index';
-import { TaskResponseType } from 'types/apiTypes';
+import { PatchRequestBody } from 'types/apiTypes';
 
-const defaultValues: Partial<TaskResponseType> = {
+const defaultValues: Partial<PatchRequestBody> = {
   name: '',
   info: '',
   isImportant: false,
@@ -26,7 +26,7 @@ export default function ChangeToDo() {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
 
-  const { handleSubmit, reset, control, setValue } = useForm<Partial<TaskResponseType>>({
+  const { handleSubmit, reset, control, setValue } = useForm<Partial<PatchRequestBody>>({
     defaultValues: defaultValues,
     resolver: yupResolver(validationSchemaChange),
   });
@@ -39,7 +39,7 @@ export default function ChangeToDo() {
     setDisabled(evt.target.checked);
   };
 
-  const onSubmit = (data: Partial<TaskResponseType>) => {
+  const onSubmit = (data: Partial<PatchRequestBody>) => {
     dispatch(patchTask(idNumber, data));
   };
 

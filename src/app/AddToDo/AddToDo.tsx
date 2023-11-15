@@ -1,11 +1,11 @@
 import { ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AddToDo.css';
+import './index.css';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './AddToDo.valid';
 import { useAppDispatch } from 'src/hooks/hooks';
-import { postFetchTask } from 'app/actions/actionsTasks';
+import { postFetchTask } from 'app/actions/actions';
 import { TaskResponseType } from 'types/apiTypes';
 
 const defaultValues: TaskResponseType = {

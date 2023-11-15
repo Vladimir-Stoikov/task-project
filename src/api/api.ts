@@ -7,14 +7,15 @@ import {
   PatchTaskType,
   PostTaskType,
   TaskResponseType,
+  SearchRequestType,
 } from 'types/apiTypes';
 import { checkBoolean } from 'utils/index';
 
 export const mapTask = (tasksFromResponse: GetTaskType): GetTaskType => {
   return tasksFromResponse.map((item) => ({
     ...item,
-    name: item.name ? item.name.toString().slice(0, 20) : undefined,
-    info: item.info ? item.info.toString().slice(0, 40) : undefined,
+    name: item.name ? item.name.toString().slice(0, 20) : 'Not valid Name',
+    info: item.info ? item.info.toString().slice(0, 40) : 'Not valid Info',
     isCompleted: checkBoolean(item.isCompleted),
     isImportant: checkBoolean(item.isImportant),
   }));
@@ -23,24 +24,18 @@ export const mapTask = (tasksFromResponse: GetTaskType): GetTaskType => {
 export const validTask = (taskFromResponse: TaskResponseType): TaskResponseType => {
   return {
     ...taskFromResponse,
-    name: taskFromResponse.name ? taskFromResponse.name.toString().slice(0, 20) : undefined,
-    info: taskFromResponse.info ? taskFromResponse.info.toString().slice(0, 40) : undefined,
+    name: taskFromResponse.name ? taskFromResponse.name.toString().slice(0, 20) : 'Not valid Name',
+    info: taskFromResponse.info ? taskFromResponse.info.toString().slice(0, 40) : 'Not valid Info',
     isCompleted: checkBoolean(taskFromResponse.isCompleted),
     isImportant: checkBoolean(taskFromResponse.isImportant),
   };
 };
 
-export const getTasksTyped = (
-  isCompletedValue: boolean | null,
-  name_likeValue: string | null,
-  isImportantValue: boolean | null
-): Promise<GetTaskType> =>
+export const getTasksTyped = (data: SearchRequestType): Promise<GetTaskType> =>
   axios
     .get('http://37.220.80.108/tasks', {
       params: {
-        isCompleted: isCompletedValue ? true : null,
-        name_like: name_likeValue || '',
-        isImportant: isImportantValue ? true : null,
+        ...data,
       },
     })
     .then((response) => response.data.reverse());

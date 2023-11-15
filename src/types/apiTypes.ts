@@ -16,3 +16,5 @@ export type PatchRequestBody = Required<
 >['requestBody']['content']['application/json'];
 
 export type TaskResponseType = paths['/tasks/{taskId}']['get']['responses'][200]['content']['application/json'];
+
+export type SearchRequestType = NonNullable<paths['/tasks']['get']['parameters']['query']>;

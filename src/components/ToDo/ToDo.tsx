@@ -2,9 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import './ToDo.css';
+import './index.css';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
+import Stack from '@mui/material/Stack';
 import { validationSchemaTask } from './ToDo.valid';
-import { deleteFetchTask, patchTask } from 'app/actions/actionsTasks';
+import { deleteFetchTask, patchTask } from 'app/actions/actions';
 import { TaskPropsType } from 'types/appTypes';
 import { useAppDispatch, useAppSelector } from 'src/hooks/hooks';
 import { TaskResponseType } from 'types/apiTypes';
@@ -13,9 +17,7 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { tasks } = useAppSelector((state) => state.task);
-
   const [disabled, setDisabled] = useState(isCompleted);
-
   const { reset, control, setValue } = useForm<Partial<TaskResponseType>>({
     defaultValues: {
       isImportant: isImportant,
@@ -55,7 +57,7 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
           render={({ field, fieldState: { error } }) => (
             <div className="form-group form-check">
               <label htmlFor="acceptTerms" className="form-check-label">
-                important?
+                important
               </label>
               <input
                 checked={field.value}
@@ -74,7 +76,7 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
           render={({ field, fieldState: { error } }) => (
             <div className="form-group form-check">
               <label htmlFor="acceptTerms" className="form-check-label">
-                completed?
+                completed
               </label>
               <input
                 checked={field.value}
@@ -87,14 +89,14 @@ export default function ToDo({ id, name, info, isCompleted, isImportant, reRende
           )}
         />
       </section>
-      <section className="todos-list_buttons-group">
-        <button className="todos-list_button" onClick={deleteCurrentTodo}>
-          delete
-        </button>
-        <button className="todos-list_button" onClick={() => navigate(`change/${id}`)}>
-          change
-        </button>
-      </section>
+      <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+        <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => deleteCurrentTodo()}>
+          Delete
+        </Button>
+        <Button variant="contained" endIcon={<SettingsApplicationsIcon />} onClick={() => navigate(`change/${id}`)}>
+          Change
+        </Button>
+      </Stack>
     </li>
   );
 }
